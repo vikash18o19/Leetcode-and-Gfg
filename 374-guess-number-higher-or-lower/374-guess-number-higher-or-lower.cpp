@@ -14,7 +14,7 @@ public:
         int ans;
         while(start<=end){
             int mid = start+(end-start)/2;
-            int x=guess(mid);
+            //int x=guess(mid);
             if(guess(mid)==-1){
                 end=mid-1;
             }
