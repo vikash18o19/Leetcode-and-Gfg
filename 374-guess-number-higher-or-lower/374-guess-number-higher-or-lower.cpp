@@ -22,10 +22,9 @@ public:
                 start=mid+1;
             }
             else if(check==0){
-                ans=mid;
-                break;
+                return mid;
             }
         }
-        return ans;
+        return -1;
     }
 };
