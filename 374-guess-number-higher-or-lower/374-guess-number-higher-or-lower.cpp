@@ -14,14 +14,13 @@ public:
         int ans;
         while(start<=end){
             int mid = start+(end-start)/2;
-            int check=guess(mid);
-            if(check==-1){
+            if(guess(mid)==-1){
                 end=mid-1;
             }
-            else if(check==1){
+            else if(guess(mid)==1){
                 start=mid+1;
             }
-            else if(check==0){
+            else if(guess(mid)==0){
                 return mid;
             }
         }
