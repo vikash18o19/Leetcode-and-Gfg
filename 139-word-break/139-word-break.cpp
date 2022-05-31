@@ -21,11 +21,22 @@ public:
     
     bool wordBreak(string s, vector<string>& dict) {
         set<string> d;
-        vector<int> dp(s.size(),-1);
+        vector<int> dp(s.size()+1,0);
         for(int j = 0; j<dict.size();j++){
             d.insert(dict[j]);
         }
-        
-        return solve(0,s,d,dp);
+        dp[s.size()]=1;
+        for(int ind = s.size()-1;ind>=0;ind--){
+            string temp;
+            for(int i =ind;i<s.size();i++){
+                temp += s[i];
+                if(d.find(temp)!=d.end()){
+                    //cout<<*d.find(temp)<<" ";
+                    if(dp[i+1])  dp[ind]=1;
+                }
+            }
+             //dp[ind] = 0;
+        }
+        return dp[0];
     }
 };
