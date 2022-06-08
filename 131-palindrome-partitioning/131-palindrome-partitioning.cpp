@@ -29,7 +29,6 @@ public:
         for(int i = ind; i<n; i++){
             if(palin(ind,i,s)){
                 ans.push_back(sub(ind,i,s));
-                //cout<<"pushed: "<<sub(ind,i,s)<<" with ind: "<<ind<<" and i: "<<i<<"\n";
                 solve(s,i+1,n,ans,out);
                 ans.erase(ans.end()-1);
             }
