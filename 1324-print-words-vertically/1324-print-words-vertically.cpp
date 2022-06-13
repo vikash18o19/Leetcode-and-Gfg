@@ -23,11 +23,9 @@ public:
         int cnt=0;
         int i=0;
         int j=0;
-        cout<<"max: "<<maxi<<"\n";
         while(i<s.size()){
             
             while(j<maxi){
-                //cout<<s[i]<<" ";
                 if(s[i]==' '){
                     ans[j]+=" ";
                     j++;
@@ -54,14 +52,7 @@ public:
                     break;
                 }
             }
-            //cout<<"\n";
         }
-        // for(int ind = 0;ind<ans.size();ind++){
-        //     for(int si = 0;si<ans[ind].size();si++){
-        //         cout<<ans[ind][si]<<" ";
-        //     }
-        //     cout<<"\n";
-        // }
         return ans;
         
     }
