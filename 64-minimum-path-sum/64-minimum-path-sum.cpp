@@ -13,12 +13,6 @@ public:
         int n=grid[0].size();
         vector<vector<int>> dp(m,vector<int>(n,-1));
         int ans = solve(m-1,n-1,grid,dp);
-        for(int i = 0;i<m;i++){
-            for(int j=0;j<n;j++){
-                cout<<dp[i][j]<<" ";
-            }
-            cout<<"\n";
-        }
         return ans;
     }
 };
