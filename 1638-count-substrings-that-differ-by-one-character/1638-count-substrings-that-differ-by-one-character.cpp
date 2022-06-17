@@ -4,15 +4,15 @@ public:
         int ans =0;
         for(int i = 0;i<s.size();i++){
             for(int j=0;j<t.size();j++){
-                int x=i;
-                int y=j;
-                int d=0;
-                while(x<s.size() && y<t.size()){
-                    if(s[x]!=t[y]) d++;
-                    if(d==1) ans++;
-                    if(d==2) break;
-                    x++;
-                    y++;
+                int a=i;
+                int b=j;
+                int dif=0;
+                while(a<s.size() && b<t.size()){
+                    if(s[a]!=t[b]) dif++;
+                    if(dif==1) ans++;
+                    if(dif==2) break;
+                    a++;
+                    b++;
                 }
             }
         }
