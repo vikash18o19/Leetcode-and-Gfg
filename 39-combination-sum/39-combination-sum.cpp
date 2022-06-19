@@ -14,11 +14,10 @@ public:
             temp.push_back(nums[ind]);
             solve(n,ind,nums,target-nums[ind],ans,temp);
             temp.pop_back();
-            solve(n,ind+1,nums,target,ans,temp);
         }
-        else{
-            solve(n,ind+1,nums,target,ans,temp);
-        }
+        
+        solve(n,ind+1,nums,target,ans,temp);
+        
         return;
         
    
