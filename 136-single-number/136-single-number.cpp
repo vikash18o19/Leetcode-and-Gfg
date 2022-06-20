@@ -16,7 +16,7 @@ public:
             }
             if(count==2) count=0;
         }
-        
+        if(count==1)return nums[n-1];
         return temp;
     }
 };
