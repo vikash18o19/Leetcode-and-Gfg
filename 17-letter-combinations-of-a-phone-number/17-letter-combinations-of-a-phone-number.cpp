@@ -6,7 +6,6 @@ public:
             return;
         }
         for(int i =0;i<str[digits[ind]-'0'].size();i++){
-            //s=s+str[digits[ind]-'0'][i];
             solve(digits,str,ans,s+str[digits[ind]-'0'][i],ind+1);
         }
         
