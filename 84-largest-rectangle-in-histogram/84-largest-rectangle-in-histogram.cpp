@@ -1,38 +1,45 @@
 class Solution {
 public:
-    int largestRectangleArea(vector<int>& heights) {
-        int n = heights.size();
-      stack < int > st;
-      int leftsmall[n], rightsmall[n];
-      for (int i = 0; i < n; i++) {
-        while (!st.empty() && heights[st.top()] >= heights[i]) {
-          st.pop();
+    int largestRectangleArea(vector<int>& h) {
+        int n = h.size();
+        stack<int> st;
+        int ls[n];
+        int rs[n];
+        for(int i=0;i<n;i++){
+            while(!st.empty() && h[st.top()]>=h[i]){
+                st.pop();
+            }
+            if(st.empty()){
+                ls[i]=0;
+            }
+            else{
+                ls[i]=st.top()+1;
+            }
+            st.push(i);
         }
-        if (st.empty())
-          leftsmall[i] = 0;
-        else
-          leftsmall[i] = st.top() + 1;
-        st.push(i);
-      }
-      // clear the stack to be re-used
-      while (!st.empty())
-        st.pop();
-
-      for (int i = n - 1; i >= 0; i--) {
-        while (!st.empty() && heights[st.top()] >= heights[i])
-          st.pop();
-
-        if (st.empty())
-          rightsmall[i] = n - 1;
-        else
-          rightsmall[i] = st.top() - 1;
-
-        st.push(i);
-      }
-      int maxA = 0;
-      for (int i = 0; i < n; i++) {
-        maxA = max(maxA, heights[i] * (rightsmall[i] - leftsmall[i] + 1));
-      }
-      return maxA;
+        while(!st.empty()){
+            st.pop();
+        }
+        for(int i=n-1;i>=0;i--){
+            while(!st.empty() && h[st.top()]>=h[i]){
+                st.pop();
+            }
+            if(st.empty()){
+                
+                rs[i]=n-1;
+                //cout<<rs[i]<<" ";
+            }
+            else{
+                rs[i]=st.top()-1;
+                //cout<<rs[i]<<" ";
+            }
+            st.push(i);
+        }
+        int ans= INT_MIN;
+        
+        for(int i =0;i<n;i++){
+            ans= max(ans,h[i]*(rs[i]-ls[i]+1));
+        }
+        return ans;
     }
 };
