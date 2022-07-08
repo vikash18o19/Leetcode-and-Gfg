@@ -24,7 +24,7 @@ class Solution
     //Function to get the maximum total value in the knapsack.
     double fractionalKnapsack(int W, Item arr[], int n)
     {
-        // Your code here
+
         priority_queue<pair<double,int>> val;
         for(int i = 0;i<n;i++){
             val.push({(double)arr[i].value/arr[i].weight,i});
@@ -32,7 +32,6 @@ class Solution
         int i=0;
         double profit = 0;
         while(i<n && W>=0){
-            //cout<<val.top().first<<"\n";
             int ind = val.top().second;
             
             if(W>=arr[ind].weight){
