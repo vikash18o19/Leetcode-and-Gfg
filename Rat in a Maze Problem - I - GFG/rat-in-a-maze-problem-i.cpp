@@ -23,28 +23,28 @@ class Solution{
         int val = m[i][j];
         m[i][j]=2;
         if(i+1<n){
-            if(m[i+1][j]!=2 && m[i+1][j]!=0){
+            if(m[i+1][j]!=2){
                 str+='D';
                 solve(m,i+1,j,n,str,ans);
                 str.pop_back();
             }
         }
         if(j+1<n){
-            if(m[i][j+1]!=2 && m[i][j+1]!=0){
+            if(m[i][j+1]!=2){
                 str+='R';
                 solve(m,i,j+1,n,str,ans);
                 str.pop_back();
             }
         }
         if(i-1>=0){
-            if(m[i-1][j]!=2 && m[i-1][j]!=0){
+            if(m[i-1][j]!=2){
                 str+='U';
                 solve(m,i-1,j,n,str,ans);
                 str.pop_back();
             }
         }
         if(j-1>=0){
-            if(m[i][j-1]!=2 && m[i][j-1]!=0){
+            if(m[i][j-1]!=2){
                 str+='L';
                 solve(m,i,j-1,n,str,ans);
                 str.pop_back();
