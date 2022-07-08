@@ -7,13 +7,12 @@ class Solution{
 
 	public:
 	int solve(int ind, int v, int n, int coins[],vector<vector<int>> &dp){
-	    if(ind==n-1){
-	        if(v%coins[ind]==0){
-	            return v/coins[ind];
-	        }
-	        else{
-	            return 1e9;
-	        }
+	    if(ind==n){
+	        return 1e9;
+	    }
+	    
+	    if(v==0){
+	        return 0;
 	    }
 	    
 	    if(dp[ind][v]!=-1){
