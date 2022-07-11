@@ -10,11 +10,11 @@ public:
             return n;
         }
         
-        if(dp[n][k]!=-1){
-            return dp[n][k];
+        if(dp[k][n]!=-1){
+            return dp[k][n];
         }
         
-         int mn = INT_MAX;
+        int mn = INT_MAX;
         int l = 1;
         int r = n;
         while(l<=r){
@@ -29,10 +29,11 @@ public:
             mn = min(mn,temp);
    
         }
-        return dp[n][k]=mn;
+        return dp[k][n] = mn;
     }
     int superEggDrop(int k, int n) {
-         vector<vector<int>> dp(n+1,vector<int>(k+1,-1));
+         vector<vector<int>> dp(k+1,vector<int>(n+1,-1));
+        //cout<<k<<" "<<n<<"\n";
         return solve(k,n,dp);
     }
 };
