@@ -1,26 +1,31 @@
 class Solution {
 public:
+    void swap(int a, int b, vector<int> &nums){
+        int temp = nums[a];
+        nums[a]=nums[b];
+        nums[b]=temp;
+    }
     void solve(int ind, vector<vector<int>> &ans, 
-               vector<int> subset ,vector<int> nums){
-        if(nums.size()==0){
-            ans.push_back(subset);
+               vector<int> &nums){
+        if(ind == nums.size()){
+            ans.push_back(nums);
             return;
         }
         
-        if(ind<nums.size()){
-            solve(ind+1,ans,subset,nums);
-            subset.push_back(nums[ind]);
-            nums.erase(nums.begin()+ind);
-            solve(0,ans,subset,nums);
+        for(int i =ind; i<nums.size();i++){
+            //cout<<nums[ind]<<"  "<<nums[i]<<"\n";
+            swap(ind,i,nums);
+            //cout<<nums[ind]<<"  "<<nums[i]<<"\n";
+            solve(ind+1,ans,nums);
+            swap(ind,i,nums);
         }
-        else
-            return;        
+        return;        
     }
     vector<vector<int>> permute(vector<int>& nums) {
         int n = nums.size();
         vector<vector<int>> ans;
-        vector<int> subset;
-        solve(0,ans,subset,nums);
+       // vector<int> subset;
+        solve(0,ans,nums);
         return ans;
     }
 };
