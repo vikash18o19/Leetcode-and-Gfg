@@ -14,22 +14,23 @@ public:
             return dp[k][n];
         }
         
-        int mn = INT_MAX;
-        int l = 1;
-        int r = n;
-        while(l<=r){
-            int mid = l+ (r-l) /2;
-            int left = solve(k-1,mid-1,dp);
-            int right = solve(k,n-mid,dp);
-            int temp = 1 + max(left,right);
-            if (left<right)  
-                l=mid+1;
-            else
-                r=mid-1;
-            mn = min(mn,temp);
-   
+        int ans = INT_MAX;
+        int l =1;
+        int h =n;
+        while(l<=h){
+            int mid = (l+h)/2;
+            int broke = solve(k-1,mid-1,dp);
+            int not_broke=solve(k,n-mid,dp);
+            if(broke<not_broke){
+                l = mid+1;
+            }
+            else{
+                h=mid-1;
+            }
+            int mx = 1+max(broke,not_broke);
+            ans = min(ans,mx);
         }
-        return dp[k][n] = mn;
+        return dp[k][n]=ans;
     }
     int superEggDrop(int k, int n) {
          vector<vector<int>> dp(k+1,vector<int>(n+1,-1));
