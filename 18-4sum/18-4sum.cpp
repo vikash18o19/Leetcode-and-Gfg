@@ -22,7 +22,7 @@ public:
                         // cout<<j<<endl;
                         vector<int>v={nums[i],nums[j],nums[left],nums[right]};
                         ans.push_back(v);
-                        left++;
+                        right--;
                     }
                 }
             }
