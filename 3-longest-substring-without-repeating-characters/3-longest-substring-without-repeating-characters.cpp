@@ -6,20 +6,20 @@ public:
             return 0;
         }
         map<char,int> mp;
-        int mx = INT_MIN;
-        for(int i =0;i<n;i++){
-            int count =0;
-            for(int j=i;j<n;j++){
-                if(mp.find(s[j])==mp.end()){
-                    count++;
-                    mp[s[j]]++;
-                }
-                else{
-                    break;
-                }
+        int mx = 0;
+        int l = 0;
+        int r =0;
+        while(l<n && r<n){
+            while(mp.find(s[r])==mp.end() && r<n){
+                mp[s[r]]++;
+                int size = r-l+1;
+                mx= max(mx,size);
+                r++;
             }
-            mx = max(mx,count);
-            mp.clear();
+            while(mp.find(s[r])!=mp.end() && l<=r){
+                mp.erase(s[l]);
+                l++;
+            }
         }
         return mx;
     }
