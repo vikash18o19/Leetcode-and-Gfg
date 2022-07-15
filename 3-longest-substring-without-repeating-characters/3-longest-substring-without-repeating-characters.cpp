@@ -10,16 +10,12 @@ public:
         int l = 0;
         int r =0;
         while(l<n && r<n){
-            while(mp.find(s[r])==mp.end() && r<n){
-                mp[s[r]]++;
-                int size = r-l+1;
-                mx= max(mx,size);
-                r++;
+            if(mp.find(s[r])!=mp.end()){
+                l = max(mp[s[r]]+1,l);
             }
-            while(mp.find(s[r])!=mp.end() && l<=r){
-                mp.erase(s[l]);
-                l++;
-            }
+            mp[s[r]]=r;
+            mx=max(mx,r-l+1);
+            r++;
         }
         return mx;
     }
