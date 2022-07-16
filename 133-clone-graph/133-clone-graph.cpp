@@ -23,23 +23,24 @@ class Solution {
 public:
     
     Node* cloneGraph(Node* node) {
-        //cout<<"hello";
         map<Node*,Node*> mp;
         queue<Node*> q;
         q.push(node);
-        Node* mera;
+        Node* shuru_vala;
+        
         if(node==NULL){
             return NULL;
         }
-        mera = new Node(node->val) ;
-        mp[node]=mera;
+        
+        shuru_vala = new Node(node->val) ;
+        mp[node]=shuru_vala;
         
         while(!q.empty()){
             
-            Node* cur = q.front();
+            Node* abhi_vala = q.front();
             q.pop();
             
-            vector<Node*> v = cur->neighbors;
+            vector<Node*> v = abhi_vala->neighbors;
             
             int n = v.size();
             
@@ -50,7 +51,7 @@ public:
                     mp[v[i]]=naya;
                     q.push(v[i]);
                 }
-                mp[cur]->neighbors.push_back(mp[v[i]]);
+                mp[abhi_vala]->neighbors.push_back(mp[v[i]]);
             }
         }
         
