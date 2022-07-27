@@ -29,7 +29,6 @@ public:
                 continue;
             }
             else{
-                //cout<<"pushed"<<"\n";
                 st.push_back(temp);
             }
             i++;
