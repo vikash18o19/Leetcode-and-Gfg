@@ -7,22 +7,18 @@ public:
             
             string temp="";
             if(path[i]=='/'){
-                //cout<<i<<"\n";
                 i++;
                 while(i<path.size() && path[i]!='/'){
-                    //cout<<path[i]<<" ";
-                    //cout<<"include: "<<i<<"\n";
                     temp+=path[i];
                     i++;
                 }
                 i--;
-                //if(i+1==path.size()) break;            
             }
             if(temp==""){
                 i++;
                 continue;
             }
-            if(temp==".."){
+            else if(temp==".."){
                 if(!st.empty())
                     st.pop_back();
                 i++;
@@ -40,7 +36,6 @@ public:
             
         }
         string ans;
-        //cout<<"1: "<<st.size();
         if(!st.empty())
         while(!st.empty()){
             ans+='/'+st.front();
