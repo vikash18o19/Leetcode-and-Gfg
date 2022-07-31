@@ -14,7 +14,7 @@ public:
         ListNode* temp = head->next;
         ListNode* cur = head->next;
         head=cur;
-        while(temp!=NULL){
+        while(true){
             while(temp->val!=0){
                 if(temp!=cur){
                     cur->val=cur->val+temp->val;
