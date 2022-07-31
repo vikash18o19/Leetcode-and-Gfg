@@ -27,34 +27,7 @@ public:
                 ans+=max(0,diff);
             }
         }
-        // for(int i =0;i<m;i++){
-        //     for(int j =0;j<n;j++){
-        //         cout<<ge[i][j]<<" ";
-        //     }
-        //     cout<<"\n";
-        // }
-        // cout<<"\n";
-        // for(int i =0;i<m;i++){
-        //     for(int j =0;j<n;j++){
-        //         cout<<gw[i][j]<<" ";
-        //     }
-        //     cout<<"\n";
-        // }
-        // cout<<"\n";
-        // for(int i =0;i<m;i++){
-        //     for(int j =0;j<n;j++){
-        //         cout<<gn[i][j]<<" ";
-        //     }
-        //     cout<<"\n";
-        // }
-        // cout<<"\n";
-        // for(int i =0;i<m;i++){
-        //     for(int j =0;j<n;j++){
-        //         cout<<gs[i][j]<<" ";
-        //     }
-        //     cout<<"\n";
-        // }
-        
+
         return ans;
     }
 };
