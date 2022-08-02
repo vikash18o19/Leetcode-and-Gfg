@@ -22,7 +22,6 @@ public:
                 }    
             }
             while(flag==1 && i<s.size()){
-
                 str[ind]+=s[i];
                 i++;
                 if(ind>0){
@@ -38,7 +37,6 @@ public:
         for(int i = 0; i<numRows;i++){
             ans+=str[i];
         }
-        //cout<<str[0];
         return ans;
         
     }
