@@ -47,12 +47,6 @@ public:
         for(int j=0;j<n;j++){
             solve(grid,vis,ans,0,j,n,m);
         }
-        for(int i=0;i<=m;i++){
-            for(int j=0;j<n;j++){
-                cout<<vis[i][j]<<" ";
-            }
-            cout<<"\n";
-        }
         return ans;
     }
 };
