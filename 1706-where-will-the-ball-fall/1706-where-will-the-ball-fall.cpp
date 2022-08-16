@@ -1,42 +1,40 @@
 class Solution {
 public:
-    void solve(int &m, int &n, vector<vector<int>> &grid,int i, int j, vector<int> &ans, vector<vector<int>> &dp){
+    void solve(vector<vector<int>>& grid,vector<vector<int>> &vis,vector<int> &ans,int i,int j,int n, int m){
         if(i==m){
             ans.push_back(j);
             return;
         }
-        if(j<0 || j>=n){
+        if(j==0 && grid[i][j]==-1){
             ans.push_back(-1);
             return;
         }
-        if((j==0 && grid[i][j]==-1) || (j==n-1 && grid[i][j]==1)){
+        if(j==n-1 && grid[i][j]==1){
             ans.push_back(-1);
             return;
         }
-        if((j>=0 && j<n)&&
-           ((grid[i][j]==1 && grid[i][j+1]==-1)||(grid[i][j]==-1 && grid[i][j-1]==1))){
+        if(grid[i][j]==1 && j<n-1 && grid[i][j+1]==-1){
             ans.push_back(-1);
             return;
         }
-        if(dp[i][j]!=-1){
-            ans.push_back(dp[i][j]);
+        if(grid[i][j]==-1 && j>0 && grid[i][j-1]==1){
+            ans.push_back(-1);
             return;
+        }
+        if(grid[i][j]==1){
+            solve(grid,vis,ans,i+1,j+1,n,m);
         }
         if(grid[i][j]==-1){
-            solve(m,n,grid,i+1,j-1,ans,dp);
+            solve(grid,vis,ans,i+1,j-1,n,m);
         }
-        else{
-            solve(m,n,grid,i+1,j+1,ans,dp);
-        }
-        return;
     }
     vector<int> findBall(vector<vector<int>>& grid) {
-        int m =grid.size();
-        int n = grid[0].size();
+        int m=grid.size();
+        int n=grid[0].size();
+        vector<vector<int>> vis(m,vector<int>(n,-1));
         vector<int> ans;
-        vector<vector<int>> dp(grid.size(),vector<int>(n,-1));
-        for(int i =0;i<n;i++){
-            solve(m,n,grid, 0, i, ans,dp);
+        for(int j=0;j<n;j++){
+            solve(grid,vis,ans,0,j,n,m);
         }
         return ans;
     }
