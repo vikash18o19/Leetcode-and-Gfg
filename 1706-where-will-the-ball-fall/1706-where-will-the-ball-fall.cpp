@@ -3,6 +3,7 @@ public:
     void solve(vector<vector<int>>& grid,vector<vector<int>> &vis,vector<int> &ans,int i,int j,int n, int m){
         if(i==m){
             ans.push_back(j);
+            vis[i][j]=j;
             return;
         }
         if(vis[i][j]!=-1){
@@ -26,16 +27,22 @@ public:
         }
         if(grid[i][j]==1){
             solve(grid,vis,ans,i+1,j+1,n,m);
+            if(vis[i+1][j+1]!=-1){
+                vis[i][j]=vis[i+1][j+1];
+            }
         }
         else{
             solve(grid,vis,ans,i+1,j-1,n,m);
+            if(vis[i+1][j-1]!=-1 ){
+                vis[i][j]=vis[i+1][j-1];
+            }
         }
         return;
     }
     vector<int> findBall(vector<vector<int>>& grid) {
         int m=grid.size();
         int n=grid[0].size();
-        vector<vector<int>> vis(m,vector<int>(n,-1));
+        vector<vector<int>> vis(m+1,vector<int>(n,-1));
         vector<int> ans;
         for(int j=0;j<n;j++){
             solve(grid,vis,ans,0,j,n,m);
