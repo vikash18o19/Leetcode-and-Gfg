@@ -1,20 +1,19 @@
 class Solution {
 public:
-    int solve(int ind, int pos,vector<vector<int>>& tri,vector<vector<int>> &dp){
-        if(ind == tri.size()) return 0;
-        if(dp[ind][pos]!=-1){
-            return dp[ind][pos];
-        }
-        int left;
-        int right;
-        
-        left = tri[ind][pos]+solve(ind+1,pos,tri,dp);
-        right = tri[ind][pos]+solve(ind+1,pos+1,tri,dp);
-        
-        return dp[ind][pos]=min(left,right);
-    }
     int minimumTotal(vector<vector<int>>& tri) {
-        vector<vector<int>> dp(tri.size(),vector<int>(tri[tri.size()-1].size(),-1));
-        return solve(0,0,tri,dp);
+        int m = tri.size();
+        int n = tri[m-1].size();
+        vector<vector<int>> dp(m+1,vector<int>(n+1,0));
+        
+        for(int ind = m-1;ind>=0;ind--){
+            for(int pos = n-1-(m-1-ind);pos>=0;pos--){
+                
+                int left = tri[ind][pos]+dp[ind+1][pos];
+                int right = tri[ind][pos]+dp[ind+1][pos+1];
+
+                dp[ind][pos]=min(left,right);
+            }
+        }
+        return dp[0][0];
     }
 };
