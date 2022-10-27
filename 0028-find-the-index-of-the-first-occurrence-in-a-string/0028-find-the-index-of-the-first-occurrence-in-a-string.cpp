@@ -16,7 +16,6 @@ public:
                     
                     if(i+j<h){
                         if(hay[i+j]==needle[j]){
-                        //cout<<hay[i+j]<<"=="<<needle[j]<<"\n";
                         continue;
                         }
                         else{
@@ -27,9 +26,7 @@ public:
                         break;
                     }
                 }
-                //cout<<i<<" "<<j<<"\n";
                 if(j==n){
-                    //cout<<"get res: "<<j<<"=="<<n<<"\n";
                     ans=temp;
                     break;
                 }
